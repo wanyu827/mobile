@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="登录" left-arrow>
+    <van-nav-bar title="登录" @click-left="$router.back()" left-arrow>
       <!-- <van-icon name="cross" slot="left" /> -->
       <template #left>
         <van-icon name="cross" />
@@ -22,7 +22,8 @@
         ]"
       >
         <template #left-icon>
-          <i class="toutiao toutiao-shouji"></i>
+          <!-- <i class="toutiao toutiao-shouji"></i> -->
+          <MyIcon name="shouji"></MyIcon>
         </template>
       </van-field>
       <van-field
@@ -35,7 +36,8 @@
         ]"
       >
         <template #left-icon>
-          <i class="toutiao toutiao-yanzhengma"></i>
+          <!-- <i class="toutiao toutiao-yanzhengma"></i> -->
+          <MyIcon name="yanzhengma"></MyIcon>
         </template>
         <template #button>
           <van-count-down
@@ -83,6 +85,7 @@ export default {
         console.log(res)
         // 把请求回来的token值存到vuex中实现共享
         this.$store.commit('setUser', res.data.data)
+        this.$router.push({ name: 'my' })
       } catch (err) {
         console.log(err)
       }
