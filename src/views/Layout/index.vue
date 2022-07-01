@@ -1,8 +1,10 @@
 <template>
   <div>
-    <router-view class="main" />
+    <keep-alive :include="['Home']">
+      <router-view class="main" />
+    </keep-alive>
 
-    <van-tabbar route>
+    <van-tabbar route active-color="#ef5959">
       <van-tabbar-item replace to="/home"
         >首页
         <template #icon>

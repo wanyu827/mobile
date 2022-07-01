@@ -114,7 +114,7 @@ export default {
 .header {
   width: 750px;
   height: 401px;
-  background: rgba(51, 150, 250, 0.7) url("@/assets/banner.png") no-repeat;
+  background: rgba(239, 89, 89, 0.7) url("@/assets/banner.png") no-repeat;
   background-size: cover;
 }
 .header-nologin {
