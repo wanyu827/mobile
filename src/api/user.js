@@ -26,3 +26,30 @@ export const getUserInfo = () => request({
   url: '/user'
 
 })
+/**
+ *
+ * @returns 用户个人信息
+ */
+export const getUserProfile = () => request({
+  url: '/user/profile'
+})
+/**
+ * 更新用户个人资料
+ * @param {Object 用户个人资料} profile
+ * @returns
+ */
+export const updateUserProfile = (profile) => request({
+  method: 'PATCH',
+  url: '/user/profile',
+  data: profile
+})
+/**
+ *更新头像
+ * @param {裁剪之后的头像数据} data
+ * @returns
+ */
+export const updateAvatar = data => request({
+  url: '/user/photo',
+  method: 'PATCH',
+  data
+})
