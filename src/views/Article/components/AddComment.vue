@@ -29,6 +29,9 @@ export default {
     target: {
       type: [Number, String],
       required: true
+    },
+    art_id: {
+      type: [Number, String]
     }
   },
   created () { },
@@ -42,8 +45,8 @@ export default {
       try {
         const res = await addComment({
           target: this.target,
-          content: this.message
-
+          content: this.message,
+          art_id: this.art_id
         })
         console.log(res)
         this.$emit('add-comment', res.data.data.new_obj)

@@ -73,6 +73,10 @@
             type="a"
             @set-count="count = $event"
             :commentList="commentList"
+            @replay-show="
+              comment = $event;
+              isReplayShow = true;
+            "
           ></ArticleComment>
         </div>
         <!-- /加载完成-文章详情 -->
@@ -130,10 +134,21 @@
         @add-comment="addComment"
       ></AddComment>
     </van-popup>
+    <van-popup
+      v-model="isReplayShow"
+      position="bottom"
+      :style="{ height: '100%' }"
+      ><ReplayComment
+        :comment="comment"
+        @close="isReplayShow = false"
+        v-if="isReplayShow"
+      ></ReplayComment
+    ></van-popup>
   </div>
 </template>
 
 <script>
+import ReplayComment from './components/ReplayComment.vue'
 import AddComment from './components/AddComment.vue'
 import ArticleComment from './components/ArticleComment.vue'
 import { ImagePreview } from 'vant'
@@ -141,7 +156,7 @@ import 'github-markdown-css'
 import { getArticle } from '@/api/article'
 export default {
   name: 'ArticleIndex',
-  components: { ArticleComment, AddComment },
+  components: { ArticleComment, AddComment, ReplayComment },
   props: {
     article_id: {
       type: [Number, String],
@@ -155,7 +170,9 @@ export default {
       is404Error: false,
       showShare: false,
       addCommentShow: false,
+      isReplayShow: false,
       commentList: [],
+      comment: {},
       options: [
         [
           { name: '微信', icon: 'wechat' },
