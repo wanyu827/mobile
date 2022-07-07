@@ -9,9 +9,9 @@ import 'amfe-flexible'
 // import '@/styles/icon.less'
 // import '@/styles/reset.less'
 import '@/styles/index.less'
-
+import FollowUser from '@/components/FollowUser.vue'
 import * as obj from './filters'
-
+import '@/components'
 // 注册全局组件
 import MyIcon from '@/components/MyIcon.vue'
 Object.keys(obj).forEach(key => {
@@ -20,7 +20,7 @@ Object.keys(obj).forEach(key => {
 Vue.component('MyIcon', MyIcon)
 Vue.use(Vant)
 Vue.config.productionTip = false
-
+Vue.component(FollowUser.name, FollowUser)
 new Vue({
   router,
   store,
